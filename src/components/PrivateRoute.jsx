@@ -1,15 +1,22 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const PrivateRoute = ({ children }) => {
+  const navigate = useNavigate();
   const userInfo = useSelector((state) => state.user.userInfo); // Check Redux state
-  const token = localStorage.getItem('token'); // Check local storage
+  
 
-  // Redirect to sign-in if user info or token is missing
-  if (!userInfo && !token) {
-    return <Navigate to="/" />;
-  }
+  useEffect(() => {
+    const token = localStorage.getItem('token'); // Check local storage
+    if (!userInfo && !token) {
+      navigate("/");
+    }
+    
+  }, [userInfo]);
+
+  
 
   return children;
 };

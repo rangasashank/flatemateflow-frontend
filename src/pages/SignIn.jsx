@@ -3,14 +3,14 @@ import { useDispatch } from 'react-redux';
 import { motion } from 'framer-motion';
 import { setUser } from '../redux/userSlice';
 import HomeLanding from '../components/HomeLanding';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
 
   const handleSignIn = async () => {
     try {
@@ -20,12 +20,13 @@ const SignIn = () => {
       });
       // Save token to local storage
       localStorage.setItem('token', response.data.token);
-      dispatch(setUser(response.data));
-      console.log('Logged in:', response.data);
-      alert("Sing in succesfull")
-      navigate('/creategroup'); // Redirect to settings if the user is not in a group
+      dispatch(setUser(response.data.user));
+      console.log('Logged in:', response.data.user);
+      alert("Sign in succesfull")
+      
     } catch (error) {
       console.error('Login Error:', error.response?.data || error.message);
+      alert(error.response.data.message)
     }
   };
 

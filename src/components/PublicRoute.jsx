@@ -8,12 +8,12 @@ const PublicRoute = ({ children }) => {
 
   if (userInfo || token) {
     // Redirect to create group if user is signed in but not in a group
-    if (!userInfo.group) {
+    if (userInfo?.group === null) {
       return <Navigate to="/creategroup" />;
     }
 
     // Redirect to main page if user is in a group
-    return <Navigate to="/main" />;
+    return <Navigate to="/mainpage" />;
   }
 
   return children; // Render the public page if not authenticated

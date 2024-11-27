@@ -5,6 +5,10 @@ import HomeLanding from '../components/HomeLanding';
 import SignOut from '../components/SingOut';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { setUser, setLoading } from '../redux/userSlice';
+
 
 const CreateGroup = () => {
   const [groupName, setgroupName] = useState('');
@@ -12,7 +16,27 @@ const CreateGroup = () => {
   const [password, setgroupPassword] = useState('');
   const navigate = useNavigate(); // Initialize useNavigate
   const userInfo = useSelector((state) => state.user.userInfo); // Access user details from userSlice
+  const loading = useSelector((state) => state.user.loading);
   const token = localStorage.getItem('token');
+  const dispatch = useDispatch()
+  useEffect(() => {
+    if (loading) {
+      return;
+  }
+  if (!userInfo) {
+    return navigate("/")
+  }
+
+   if (!userInfo.group) {
+      console.log("continue to create group")
+    } else {
+      navigate("/mainpage")
+    }
+  }, [userInfo, loading, navigate]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
   const handleGroup = async () => {
     try {
       if (userInfo.email === userEmail) {
@@ -26,6 +50,18 @@ const CreateGroup = () => {
         }
       });
       console.log('Group Created:', response.data);
+        try {
+          dispatch(setLoading(false))
+          const response = await axios.get('https://flatemateflow-1buecqef.b4a.run/api/users/profile', {
+            headers: { Authorization: `Bearer ${token}` },
+          });
+          console.log(response.data)
+          dispatch(setUser(response.data)); // Save user details to Redux
+        } catch (error) {
+          console.error('Error fetching user details:', error.response?.data || error.message);
+          localStorage.removeItem('token'); // Remove invalid token
+          dispatch(setLoading(false))
+        }
       alert("Group created succesfully")
       navigate('/mainpage'); // Redirect to the main page
       }
