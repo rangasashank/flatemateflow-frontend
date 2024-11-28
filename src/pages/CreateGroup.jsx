@@ -122,7 +122,7 @@ const CreateGroup = () => {
         </motion.button>
         <p className="mt-4 text-sm text-center">
           Want to join a group?{' '}
-          <a href="/joinGroup" className="text-blue-500">
+          <a href="/joingroup" className="text-blue-500">
             Join Group
           </a>
         </p>
