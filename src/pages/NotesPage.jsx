@@ -154,7 +154,7 @@ const NotesPage = () => {
               exit={{ opacity: 0, y: 10 }}
               transition={{ duration: 0.3 }}
             >
-              <p>{note.content}</p>
+              <p className="pt-2">{note.content}</p>
               <span className="text-sm text-gray-500">
                 Created: {new Date(note.createdAt).toLocaleDateString()}
               </span>
@@ -162,7 +162,7 @@ const NotesPage = () => {
                 Created By: {findName(note.createdBy)}
               </span>
 
-              <div className="absolute p-3 top-2 right-2 flex space-x-2">
+              <div className="absolute top-2 right-2 flex space-x-2">
                 <button
                   onClick={() => {
                     const isPinned = note.pinned
