@@ -76,8 +76,6 @@ const MainPage = () => {
 
   // Handle redirection and data fetching logic
   useEffect(() => {
-    console.log("User Info:", userInfo);
-    console.log("Loading:", loading);
     if (loading) return; // Wait for loading state to complete
 
     if (!userInfo) {

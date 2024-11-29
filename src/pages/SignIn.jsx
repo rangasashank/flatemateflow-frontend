@@ -21,7 +21,7 @@ const SignIn = () => {
       // Save token to local storage
       localStorage.setItem('token', response.data.token);
       dispatch(setUser(response.data.user));
-      console.log('Logged in:', response.data.user);
+      console.log('Logged in:');
       alert("Sign in succesfull")
       
     } catch (error) {

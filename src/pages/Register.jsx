@@ -18,7 +18,7 @@ const Register = () => {
         email,
         password,
       });
-      console.log('Registered:', response.data);
+      console.log('Registered:');
       alert("User registered succesfully, Please login")
       navigate('/signin'); // Redirect to the Sign In page
 

@@ -37,8 +37,6 @@ const JoinGroup = () => {
     }
 
   const handleGroupJoin = async () => {
-    console.log('Joining Group with:', { groupName, groupPassword }); // Debugging Log
-    console.log(token)
     if (!groupName || !groupPassword) {
       alert('Please fill in both the group name and password.');
       return;
@@ -55,7 +53,7 @@ const JoinGroup = () => {
         }
       );
   
-      console.log('Group Joined:', response.data);
+      console.log('Group Joined:');
   
       // Fetch updated user profile
       dispatch(setLoading(true)); // Set loading state

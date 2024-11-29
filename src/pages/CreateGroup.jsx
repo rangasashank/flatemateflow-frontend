@@ -49,7 +49,7 @@ const CreateGroup = () => {
           Authorization: `Bearer ${token}`, // Include the token in the Authorization header
         }
       });
-      console.log('Group Created:', response.data);
+      console.log('Group Created:');
         try {
           dispatch(setLoading(false))
           const response = await axios.get('https://flatemateflow-1buecqef.b4a.run/api/users/profile', {
