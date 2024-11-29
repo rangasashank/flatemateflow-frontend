@@ -25,7 +25,7 @@ const SideNav = () => {
 
     // Cleanup listener on unmount
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [isOpen]);
 
   return (
     <>
