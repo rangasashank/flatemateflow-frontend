@@ -33,9 +33,9 @@ const ExpensesPage = () => {
     <div className="flex min-h-screen bg-[#EAF6FF]">
 
     <SideNav></SideNav>
-    <div className="flex justify-center items-center">
+    
       <h1>Coming soon...</h1>
-    </div>
+    
     </div>
   );
 };
