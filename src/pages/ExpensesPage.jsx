@@ -34,7 +34,7 @@ const ExpensesPage = () => {
 
     <SideNav></SideNav>
     
-      <h1>Coming soon...</h1>
+      <div>Coming Soon ...</div>
     
     </div>
   );
