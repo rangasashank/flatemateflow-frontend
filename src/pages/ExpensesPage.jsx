@@ -13,12 +13,6 @@ const ExpensesPage = () => {
   const navigate = useNavigate();
 
 
-
-  useEffect(() => {
-    console.log("Updated Group Members:", groupMembers);
-  }, [groupMembers]);
-
-
   useEffect(() => {
     if (!loading) {
       if (!userInfo) {
@@ -39,6 +33,9 @@ const ExpensesPage = () => {
     <div className="flex min-h-screen bg-[#EAF6FF]">
 
     <SideNav></SideNav>
+    <div className="flex justify-center items-center">
+      <h1>Coming soon...</h1>
+    </div>
     </div>
   );
 };

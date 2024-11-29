@@ -169,7 +169,9 @@ const TasksPage = () => {
             </motion.li>
           ))}
         </ul>
+        <div>Recurring tasks with automated assignment every week coming soon...</div>
       </motion.div>
+
     </div>
   );
 };
