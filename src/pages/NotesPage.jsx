@@ -19,14 +19,14 @@ const NotesPage = () => {
       const headers = { Authorization: `Bearer ${token}` };
 
       const response = await axios.get(
-        `https://flatemateflow-1buecqef.b4a.run/api/notes/${userInfo.group}`,
+        import.meta.env.VITE_API_URL +`/api/notes/${userInfo.group}`,
         { headers }
       );
       setNotes(response.data);
 
       // Fetch group members
       const membersResponse = await axios.get(
-        `https://flatemateflow-1buecqef.b4a.run/api/groups/${userInfo.group}`,
+        import.meta.env.VITE_API_URL+`/api/groups/${userInfo.group}`,
         { headers }
       );
       setGroupMembers(membersResponse.data); // Assume API returns an array of member objects with `name` and `_id`
@@ -41,7 +41,7 @@ const NotesPage = () => {
       const headers = { Authorization: `Bearer ${token}` };
 
       await axios.post(
-        "https://flatemateflow-1buecqef.b4a.run/api/notes/",
+        import.meta.env.VITE_API_URL +"/api/notes/",
         { content: newNote, group: userInfo.group },
         { headers }
       );
@@ -58,14 +58,14 @@ const NotesPage = () => {
       const headers = { Authorization: `Bearer ${token}` };
       if (!isPinned) {
         await axios.post(
-          `https://flatemateflow-1buecqef.b4a.run/api/notes/pin/${noteId}`,
+          import.meta.env.VITE_API_URL +`/api/notes/pin/${noteId}`,
           {},
           { headers }
         );
       }
       else {
         await axios.post(
-          `https://flatemateflow-1buecqef.b4a.run/api/notes/unpin/${noteId}`,
+          import.meta.env.VITE_API_URL +`/api/notes/unpin/${noteId}`,
           {},
           { headers }
         );
@@ -83,7 +83,7 @@ const NotesPage = () => {
       const headers = { Authorization: `Bearer ${token}` };
 
       await axios.delete(
-        `https://flatemateflow-1buecqef.b4a.run/api/notes/${noteId}`,
+        import.meta.env.VITE_API_URL+`/api/notes/${noteId}`,
         { headers }
       );
       fetchNotes(); // Refresh notes after deletion

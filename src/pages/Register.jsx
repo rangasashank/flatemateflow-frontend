@@ -13,7 +13,7 @@ const Register = () => {
 
   const handleRegister = async () => {
     try {
-      const response = await axios.post('https://flatemateflow-1buecqef.b4a.run/api/users/register', {
+      const response = await axios.post(import.meta.env.VITE_API_URL + '/api/users/register', {
         name,
         email,
         password,

@@ -20,7 +20,7 @@ const SettingsPage = () => {
   const handleLeaveGroup = async () => {
     try {
       await axios.post(
-        'https://flatemateflow-1buecqef.b4a.run/api/groups/leave',
+        import.meta.env.VITE_API_URL + '/api/groups/leave',
         {}, // Assuming your API expects no body for leaving
         { headers }
       );
@@ -36,7 +36,7 @@ const SettingsPage = () => {
   const handleAddMember = async () => {
     try {
       await axios.post(
-        'https://flatemateflow-1buecqef.b4a.run/api/groups/addmember',
+        import.meta.env.VITE_API_URL +'/api/groups/addmember',
         { email: memberEmail },
         { headers }
       );
@@ -52,7 +52,7 @@ const SettingsPage = () => {
   const handleRemoveMember = async () => {
     try {
       await axios.post(
-        'https://flatemateflow-1buecqef.b4a.run/api/groups/removemember',
+        import.meta.env.VITE_API_URL + '/api/groups/removemember',
         { groupId: userInfo.group, userEmail: email, admin_email: userInfo.email },
         { headers }
       );
@@ -68,7 +68,7 @@ const SettingsPage = () => {
   const handleDeleteGroup = async () => {
     try {
       await axios.post(
-        'https://flatemateflow-1buecqef.b4a.run/api/groups/deletegroup',
+        import.meta.env.VITE_API_URL + '/api/groups/deletegroup',
         { groupId: userInfo.group, groupPassword: password, admin_email: userInfo.email },
         { headers }
       );

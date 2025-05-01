@@ -22,7 +22,7 @@ const SignOutNav = () => {
 
     // Make the logout API call
     await axios.post(
-      'https://flatemateflow-1buecqef.b4a.run/api/users/logout',
+      import.meta.env.VITE_API_URL+'/api/users/logout',
       {}, // Empty body
       {
         headers: { Authorization: `Bearer ${token}` }, // Send the token in the header

@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   userInfo: null,
   loading: true, // Indicates if user data is being rehydrated
+
 };
 
 const userSlice = createSlice({

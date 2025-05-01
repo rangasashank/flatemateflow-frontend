@@ -40,7 +40,7 @@ const CreateGroup = () => {
   const handleGroup = async () => {
     try {
       if (userInfo.email === userEmail) {
-        const response = await axios.post('https://flatemateflow-1buecqef.b4a.run/api/groups/creategroup', {
+        const response = await axios.post(import.meta.env.VITE_API_URL+'/api/groups/creategroup', {
           groupName,
           password,
           userEmail
@@ -52,7 +52,7 @@ const CreateGroup = () => {
       console.log('Group Created:');
         try {
           dispatch(setLoading(false))
-          const response = await axios.get('https://flatemateflow-1buecqef.b4a.run/api/users/profile', {
+          const response = await axios.get(import.meta.env.VITE_API_URL +'/api/users/profile', {
             headers: { Authorization: `Bearer ${token}` },
           });
           console.log(response.data)

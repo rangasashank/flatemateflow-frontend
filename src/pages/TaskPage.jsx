@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import SideNav from "../components/SideNav";
 
+
+
 const TasksPage = () => {
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState({
@@ -26,7 +28,7 @@ const TasksPage = () => {
       const headers = { Authorization: `Bearer ${token}` };
 
       const response = await axios.get(
-        `https://flatemateflow-1buecqef.b4a.run/api/tasks/${group}`,
+        import.meta.env.VITE_API_URL + `/api/tasks/${group}`,
         { headers }
       );
 
@@ -34,7 +36,7 @@ const TasksPage = () => {
 
       // Fetch group members
       const membersResponse = await axios.get(
-        `https://flatemateflow-1buecqef.b4a.run/api/groups/${group}`,
+        import.meta.env.VITE_API_URL + `/api/groups/${group}`,
         { headers }
       );
       setGroupMembers(membersResponse.data); // Assume API returns an array of member objects with `name` and `_id`
@@ -57,7 +59,7 @@ const TasksPage = () => {
       const headers = { Authorization: `Bearer ${token}` };
 
       await axios.post(
-        "https://flatemateflow-1buecqef.b4a.run/api/tasks/",
+        import.meta.env.VITE_API_URL + "/api/tasks/",
         newTask,
         { headers }
       );

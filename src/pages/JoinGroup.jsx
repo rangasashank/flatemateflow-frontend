@@ -44,7 +44,7 @@ const JoinGroup = () => {
   
     try {
       const response = await axios.post(
-        'https://flatemateflow-1buecqef.b4a.run/api/groups/join',
+        import.meta.env.VITE_API_URL+'/api/groups/join',
         { groupName, groupPassword },
         {
           headers: {
@@ -58,7 +58,7 @@ const JoinGroup = () => {
       // Fetch updated user profile
       dispatch(setLoading(true)); // Set loading state
       const userResponse = await axios.get(
-        'https://flatemateflow-1buecqef.b4a.run/api/users/profile',
+        import.meta.env.VITE_API_URL+'/api/users/profile',
         { headers: { Authorization: `Bearer ${token}` } }
       );
   

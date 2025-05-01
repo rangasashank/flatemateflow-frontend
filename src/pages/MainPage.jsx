@@ -28,7 +28,7 @@ const MainPage = () => {
       setIsFetching(true); // Start fetching data
 
       const taskResponse = await axios.get(
-        `https://flatemateflow-1buecqef.b4a.run/api/tasks/${group}`,
+        import.meta.env.VITE_API_URL+`/api/tasks/${group}`,
         { headers }
       );
       const userTasks = taskResponse.data.filter((t) => t.assignedTo.name === userInfo.name)
@@ -39,7 +39,7 @@ const MainPage = () => {
 
       // Fetch notes (latest and pinned)
       const noteResponse = await axios.get(
-        `https://flatemateflow-1buecqef.b4a.run/api/notes/${group}`,
+        import.meta.env.VITE_API_URL+`/api/notes/${group}`,
         { headers }
       );
       const pinned = noteResponse.data.filter((note) => note.pinned);
@@ -47,7 +47,7 @@ const MainPage = () => {
 
       // Fetch group members
       const membersResponse = await axios.get(
-        `https://flatemateflow-1buecqef.b4a.run/api/groups/${group}`,
+        import.meta.env.VITE_API_URL+`/api/groups/${group}`,
         { headers }
       );
       setGroupMembers(membersResponse.data); // Assume API returns an array of member objects with `name` and `_id`
@@ -67,7 +67,7 @@ const MainPage = () => {
     const headers = { Authorization: `Bearer ${token}` };
 
     try {
-      await axios.put(`https://flatemateflow-1buecqef.b4a.run/api/tasks/${taskId}/complete`, {}, { headers });
+      await axios.put(import.meta.env.VITE_API_URL +`/api/tasks/${taskId}/complete`, {}, { headers });
       fetchData(); // Refresh tasks after marking as complete
     } catch (error) {
       console.error('Error marking task as complete:', error.response?.data || error.message);
