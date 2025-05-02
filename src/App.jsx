@@ -27,7 +27,7 @@ const App = () => {
 
     if (token) {
       try {
-        const response = await axios.get('https://flatemateflow-1buecqef.b4a.run/api/users/profile', {
+        const response = await axios.get(import.meta.env.VITE_API_URL + '/api/users/profile', {
           headers: { Authorization: `Bearer ${token}` },
         });
         dispatch(setUser(response.data)); // Save user details to Redux

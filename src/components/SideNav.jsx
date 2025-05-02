@@ -2,30 +2,27 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import SignOutNav from "./SignOutNav";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 const SideNav = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(window.innerWidth >= 1024);
+  const prevWidth = useRef(window.innerWidth);
 
-   // Set initial state based on screen size
-   useEffect(() => {
+  useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 1024) {
-        setIsOpen(true); // Open sidebar for desktop
-      } else {
-        setIsOpen(false); // Close sidebar for mobile
+      const currentWidth = window.innerWidth;
+      if (
+        (prevWidth.current < 1024 && currentWidth >= 1024) ||
+        (prevWidth.current >= 1024 && currentWidth < 1024)
+      ) {
+        setIsOpen(currentWidth >= 1024);
       }
+      prevWidth.current = currentWidth;
     };
 
-    // Run on component mount
-    handleResize();
-
-    // Add event listener for screen resize
     window.addEventListener("resize", handleResize);
-
-    // Cleanup listener on unmount
     return () => window.removeEventListener("resize", handleResize);
-  }, [isOpen]);
+  }, []);
 
   return (
     <>
