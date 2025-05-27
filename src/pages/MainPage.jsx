@@ -118,7 +118,7 @@ const MainPage = () => {
         transition={{ duration: 0.8 }}
       >
         <h1 className="text-2xl font-bold flex justify-center text-gray-800 pt-5 mb-4">
-          Welcome back {userInfo.name}
+          Welcome Back, {userInfo.name}
         </h1>
 
         <div className="grid gap-6 md:grid-cols-2">

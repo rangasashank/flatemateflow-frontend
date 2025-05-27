@@ -29,7 +29,7 @@ const SideNav = () => {
       {/* Header for Mobile */}
       <header className="fixed top-0 left-0 w-full bg-white shadow z-50 p-4 lg:hidden">
         <div className="flex items-center justify-between">
-          <h1 className="text-xl font-bold text-gray-700">Flatmate Flow</h1>
+          <h1 className="text-xl font-bold text-gray-700">FlatmateFlow</h1>
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="bg-blue-500 text-white p-2 rounded"
@@ -43,7 +43,7 @@ const SideNav = () => {
       <div className="lg:flex lg:flex-col lg:fixed lg:top-0 lg:left-0 lg:h-full lg:w-64 bg-white shadow-lg">
         {/* Sidebar Header (Always Visible) */}
         <div className="hidden lg:block p-4 border-b border-gray-200">
-          <h1 className="text-xl font-bold text-gray-700">Flatmate Flow</h1>
+          <h1 className="text-xl font-bold text-gray-700">FlatmateFlow</h1>
         </div>
 
         {/* Sidebar for Mobile */}
